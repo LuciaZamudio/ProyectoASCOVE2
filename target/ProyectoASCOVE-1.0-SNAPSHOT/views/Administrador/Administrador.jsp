@@ -15,7 +15,7 @@
 </head>
 <body class="text-center fondo texto">
 <form>
-    
+
     <div class="any">
         <img src="<%=context%>/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg" class="izquierda" alt="No encontrado">
         <img src="<%=context%>/assets/img/image_750x_5e93e4dd3fa46.jpg" class="derecha" alt = "No Encontrado">
