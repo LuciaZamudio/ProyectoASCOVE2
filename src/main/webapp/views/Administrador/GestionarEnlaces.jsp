@@ -11,10 +11,10 @@
     <meta name="generator" content="ASCOVE">
     <link rel="stylesheet" href="<%=context%>/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/assets/css/styles.css">
-    <title>Gestion Enlaces</title>
+    <title>Gestión de Enlaces</title>
 </head>
 <body class="text-center fondo texto">
-<form>
+<main name="">
     <div class="any">
         <img src="<%=context%>/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg" class="izquierda" alt="No encontrado">
         <img src="<%=context%>/assets/img/image_750x_5e93e4dd3fa46.jpg" class="derecha" alt = "No Encontrado">
@@ -23,6 +23,15 @@
         <br>
         <h4>-Gestión de Enlaces de Comités-</h4>
     </div>
+
+    <nav class="navbar alinear margen7">
+        <div class="container-fluid">
+            <form class="d-flex">
+                <button class="btn boton img.izquierda" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </nav>
+
     <div class="alinear margen3">
         <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register"> Agregar Enlace</a>
         <input  restrict="reject" class="ng-pristine ng-untouched ng-valid ng-empty" id="numEnlace" placeholder="# Enlace">
@@ -35,18 +44,19 @@
                 <th># Enlace</th>
                 <th>Municipio</th>
                 <th>Nombre Completo</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Acción</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${ listSolicitud }" var="game" varStatus="status">
                 <tr>
-                    <td>${ status.count }</td>
-                    <td>${ game.nameGame }</td>
-                    <td>${ game.date_premiere }</td>
-                    <td>${ game.imgGame }</td>
-                    <td>${ game.idGame.nameCategory}</td>
+                <tr>
+                    <!-- <td>${""  }</td>
+                    <td>${ "" }</td>
+                    <td>${ "" }</td>
+                    <td>${ "" }</td>
+                    <td>${ ""}</td>
                     <td>
                         <c:if test="${ game.status == 1 }">
                             <span class="badge rounded-pill bg-success">Activo</span>
@@ -57,63 +67,115 @@
                     </td>
                     <td>
                         <c:if test="${ game.status == 1 }">
-                            <form action="${context}/getGame" method="POST" style="display: inline;">
+                            <form action="" method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="getUserById">
                                 <input type="hidden" name="id" value="${ game.idGame }">
                                 <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Modificar</button>
                             </form>
-                            <button id="btn-delete-${ status.count }" dat-code="${ game.idGame }" data-text="${ game.idGame.name }" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete"><i class="fas fa-trash"></i> Eliminar</button>
+                            <button id="btnDelete" type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete"><i class="fas fa-trash"></i> Eliminar</button>
                         </c:if>
                         <c:if test="${ game.status == 0 }">
-                            <button id="btn-details-${ status.count }" data-code="${ game.idGame }" type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button id="btn-details-${ status.count }" data-code="${ game.idGame }" type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
                         </c:if>
-                    </td>
+                    </td>-->
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
-</form>
-<%-- MODAL --%>
-<div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Enlace</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" action="${context}/createGame">
-                <input type="hidden" value="create" name="action">
-                <label>Nombre:</label>
-                <input class="form-control" type="text" name="nameGame" />
-                <br>
-                <label>Imagen:</label>
-                <input class="form-control" type="file" name="imgGame" />
-                <br>
-                <label>Fecha premiere:</label>
-                <input class="form-control" type="date" name="date" />
-                <br>
-                <label>Estado</label>
-                <select class="form-select" name="estado">
-                    <option value="1">Actvo</option>
-                    <option value="0">Inactivo</option>
-                </select>
-                <br>
-                <button type="button" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>
+</main>
+
+<!--MODAL REGISTRAR-->
+<form method="POST">
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Enlace</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" action="">
+                    <input type="hidden" value="create" name="action">
+                    <label>Nombre:</label>
+                    <input class="form-control" type="text" name="nombre" />
+                    <br>
+                    <label>Apellido Paterno</label>
+                    <input class="form-control" type="text" name="aPaterno" />
+                    <br>
+                    <label>Apellido Materno</label>
+                    <input class="form-control" type="text" name="aMaterno" />
+                    <br>
+                    <label>Municipio</label>
+                    <select class="form-select fecha" id="municipio" name="municipio"  >
+                        <option value="0" class="text-muted text-gray-900">Selecciona</option>
+                        <option value="1">Amacuzac</option>
+                        <option value="2">Atlatlahucan</option>
+                        <option value="3">Axochiapan</option>
+                        <option value="4">Ayala</option>
+                        <option value="5">Coatlán del Río</option>
+                        <option value="6">Cuautla</option>
+                        <option value="7">Cuernavaca</option>
+                        <option value="8">Emiliano Zapata</option>
+                        <option value="9">Huitzilac</option>
+                        <option value="10">Jantetelco</option>
+                        <option value="11">Jiutepec</option>
+                        <option value="12">Jojutla</option>
+                        <option value="13">Jonacatepec</option>
+                        <option value="14">Mazatepec</option>
+                        <option value="15">Miacatlán</option>
+                        <option value="16">Ocuituco</option>
+                        <option value="17">Puente de Ixtla</option>
+                        <option value="18">Temixco</option>
+                        <option value="19">Temoac</option>
+                        <option value="20">Tepalcingo</option>
+                        <option value="21">Tepoztlán</option>
+                        <option value="22">Tetecala</option>
+                        <option value="23">Tetela del Volcán</option>
+                        <option value="24">Tlalnepantla</option>
+                        <option value="25">Tlaltizapán</option>
+                        <option value="26">Tlaquiltenango</option>
+                        <option value="27">Tlayacapan</option>
+                        <option value="28">Xochitepec</option>
+                        <option value="29">Zacatepec</option>
+                        <option value="30">Zacualpan</option>
+                        <option value="31">Totolapan</option>
+                        <option value="32">Yautepec</option>
+                        <option value="33">Yecapixtla</option>
+                    </select>
+                    <br>
+                    <label>Colonia</label>
+                    <input class="form-control" type="text" name="colonia" />
+                    <br>
+                    <label>Calle</label>
+                    <input class="form-control" type="text" name="calle" />
+                    <br>
+                    <label>Teléfono</label>
+                    <input class="form-control" type="text" name="telefono" />
+                    <br>
+                    <!--<label>Estado</label>
+                    <select class="form-select" name="estadoAdmin">
+                        <option value="1">Actvo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                    <br>-->
+                    <button type="submit" class="btn btn-secondary" ><i class="fas fa-times"></i> Cancelar</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="${context}/deleteGame" method="POST">
+</form>
+
+
+<!--MODAL ELIMINAR-->
+<form method="POST">
+    <div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" id="id">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Enlace</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Deshabilitar Enlace</h5>
+                    <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <label>¿Deshabilitar?</label>
@@ -123,40 +185,46 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
-<div class="modal fade" id="details" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Detalles de Enlace</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h5>Nombre(s):</h5>
-                <label id="lbl_name"></label>
-                <br>
-                <h5>Categoria:</h5>
-                <label id="lbl_category"></label>
-                <br>
-                <h5>Imagen:</h5>
-                <label id="lbl_imgGame"></label>
-                <br>
-                <h5>Estado:</h5>
-                <label id="lbl_status"></label>
-                <br>
-                <h5>Fecha:</h5>
-                <label id="lbl_date"></label>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+<!--MODAL DETALLES-->
+<form method="POST">
+    <div class="modal fade" id="details" tabindex="-1" ria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles de Enlace</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5># Enlace:</h5>
+                    <label id="lbl_id"></label>
+                    <br>
+                    <h5>Nombre completo:</h5>
+                    <label id="lbl_nombre"></label>
+                    <br>
+                    <h5>Municipio:</h5>
+                    <label id="lbl_municipio"></label>
+                    <br>
+                    <h5>Colonia:</h5>
+                    <label id="lbl_colonia"></label>
+                    <br>
+                    <h5>Calle:</h5>
+                    <label id="lbl_calle"></label>
+                    <br>
+                    <h5>Teléfono:</h5>
+                    <label id="lbl_telefono"></label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>

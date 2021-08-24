@@ -30,6 +30,15 @@
         <br>
         <h4>-Gestión de Administradores-</h4>
     </div>
+
+    <nav class="navbar alinear margen7">
+        <div class="container-fluid">
+            <form class="d-flex">
+                <button class="btn boton img.izquierda" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </nav>
+
     <div class="alinear margen3">
         <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register"> Agregar Administrador</a>
         <input  restrict="reject" class="ng-pristine ng-untouched ng-valid ng-empty" id="numEnlace" placeholder="# Administrador">
@@ -47,13 +56,13 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="" var="game" varStatus="status">
+            <c:forEach items=" " var=" " varStatus="status">
                 <tr>
-                    <td>${ status.count }</td>
-                    <td>${ game.nameGame }</td>
-                    <td>${ game.date_premiere }</td>
-                    <td>${ game.imgGame }</td>
-                    <td>${ game.idGame.nameCategory}</td>
+                   <!-- <td>${""  }</td>
+                    <td>${ "" }</td>
+                    <td>${ "" }</td>
+                    <td>${ "" }</td>
+                    <td>${ ""}</td>
                     <td>
                         <c:if test="${ game.status == 1 }">
                             <span class="badge rounded-pill bg-success">Activo</span>
@@ -74,7 +83,7 @@
                         <c:if test="${ game.status == 0 }">
                             <button id="btn-details-${ status.count }" data-code="${ game.idGame }" type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
                         </c:if>
-                    </td>
+                    </td>-->
                 </tr>
             </c:forEach>
             </tbody>
@@ -195,7 +204,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Detalles de Enlace</h5>
+                <h5 class="modal-title">Detalles de Administrador</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

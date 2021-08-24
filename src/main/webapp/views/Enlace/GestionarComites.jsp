@@ -11,17 +11,18 @@
     <meta name="generator" content="ASCOVE">
     <link rel="stylesheet" href="<%=context%>/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/assets/css/styles.css">
-    <title>Gestión de Enlaces</title>
+    <title>Gestion de Comités</title>
 </head>
+
 <body class="text-center fondo texto">
-<main name="">
-    <div class="any">
+<main>
+    <div id="cabezera" class="any">
         <img src="<%=context%>/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg" class="izquierda" alt="No encontrado">
         <img src="<%=context%>/assets/img/image_750x_5e93e4dd3fa46.jpg" class="derecha" alt = "No Encontrado">
         <h1>ASCOVE</h1>
         <h2>Atención de Solicitudes de Comités Vecinales</h2>
         <br>
-        <h4>-Gestión de Enlaces de Comités-</h4>
+        <h4>-Gestión de Comités-</h4>
     </div>
 
     <nav class="navbar alinear margen7">
@@ -33,7 +34,7 @@
     </nav>
 
     <div class="alinear margen3">
-        <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register"> Agregar Enlace</a>
+        <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register"> Agregar comité</a>
         <input  restrict="reject" class="ng-pristine ng-untouched ng-valid ng-empty" id="numEnlace" placeholder="# Enlace">
         <button class="btn boton" type="button">Buscar</button>
     </div>
@@ -41,9 +42,9 @@
         <table class="table table2">
             <thead class="table-dark">
             <tr>
-                <th># Enlace</th>
-                <th>Municipio</th>
-                <th>Nombre Completo</th>
+                <th># Comité</th>
+                <th>Colonia</th>
+                <th>Presidente</th>
                 <th>Teléfono</th>
                 <th>Acción</th>
             </tr>
@@ -51,12 +52,10 @@
             <tbody>
             <c:forEach items="${ listSolicitud }" var="game" varStatus="status">
                 <tr>
-                <tr>
-                    <!-- <td>${""  }</td>
+                    <!--<td>${ "" }</td>
                     <td>${ "" }</td>
+                    <td>${ "" }</td>game.imgGame }</td>
                     <td>${ "" }</td>
-                    <td>${ "" }</td>
-                    <td>${ ""}</td>
                     <td>
                         <c:if test="${ game.status == 1 }">
                             <span class="badge rounded-pill bg-success">Activo</span>
@@ -67,12 +66,11 @@
                     </td>
                     <td>
                         <c:if test="${ game.status == 1 }">
-                            <form action="" method="POST" style="display: inline;">
+                            <form action="${context}/getGame" method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="getUserById">
                                 <input type="hidden" name="id" value="${ game.idGame }">
-                                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Modificar</button>
+                                <button type="submit" class="btn btn-outline-primary">Modificar</button>
                             </form>
-                            <button id="btnDelete" type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete"><i class="fas fa-trash"></i> Eliminar</button>
                         </c:if>
                         <c:if test="${ game.status == 0 }">
                             <button id="btn-details-${ status.count }" data-code="${ game.idGame }" type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
@@ -85,87 +83,56 @@
     </div>
 </main>
 
+
 <!--MODAL REGISTRAR-->
 <form method="POST">
     <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Agregar Enlace</h5>
+                    <h5 class="modal-title">Agregar Comité</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" action="">
-                    <input type="hidden" value="create" name="action">
-                    <label>Nombre:</label>
-                    <input class="form-control" type="text" name="nombre" />
-                    <br>
-                    <label>Apellido Paterno</label>
-                    <input class="form-control" type="text" name="aPaterno" />
-                    <br>
-                    <label>Apellido Materno</label>
-                    <input class="form-control" type="text" name="aMaterno" />
-                    <br>
-                    <label>Municipio</label>
-                    <select class="form-select fecha" id="municipio" name="municipio"  >
-                        <option value="0" class="text-muted text-gray-900">Selecciona</option>
-                        <option value="1">Amacuzac</option>
-                        <option value="2">Atlatlahucan</option>
-                        <option value="3">Axochiapan</option>
-                        <option value="4">Ayala</option>
-                        <option value="5">Coatlán del Río</option>
-                        <option value="6">Cuautla</option>
-                        <option value="7">Cuernavaca</option>
-                        <option value="8">Emiliano Zapata</option>
-                        <option value="9">Huitzilac</option>
-                        <option value="10">Jantetelco</option>
-                        <option value="11">Jiutepec</option>
-                        <option value="12">Jojutla</option>
-                        <option value="13">Jonacatepec</option>
-                        <option value="14">Mazatepec</option>
-                        <option value="15">Miacatlán</option>
-                        <option value="16">Ocuituco</option>
-                        <option value="17">Puente de Ixtla</option>
-                        <option value="18">Temixco</option>
-                        <option value="19">Temoac</option>
-                        <option value="20">Tepalcingo</option>
-                        <option value="21">Tepoztlán</option>
-                        <option value="22">Tetecala</option>
-                        <option value="23">Tetela del Volcán</option>
-                        <option value="24">Tlalnepantla</option>
-                        <option value="25">Tlaltizapán</option>
-                        <option value="26">Tlaquiltenango</option>
-                        <option value="27">Tlayacapan</option>
-                        <option value="28">Xochitepec</option>
-                        <option value="29">Zacatepec</option>
-                        <option value="30">Zacualpan</option>
-                        <option value="31">Totolapan</option>
-                        <option value="32">Yautepec</option>
-                        <option value="33">Yecapixtla</option>
-                    </select>
-                    <br>
-                    <label>Colonia</label>
-                    <input class="form-control" type="text" name="colonia" />
-                    <br>
-                    <label>Calle</label>
-                    <input class="form-control" type="text" name="calle" />
-                    <br>
-                    <label>Teléfono</label>
-                    <input class="form-control" type="text" name="telefono" />
-                    <br>
-                    <!--<label>Estado</label>
-                    <select class="form-select" name="estadoAdmin">
-                        <option value="1">Actvo</option>
-                        <option value="0">Inactivo</option>
-                    </select>
-                    <br>-->
-                    <button type="submit" class="btn btn-secondary" ><i class="fas fa-times"></i> Cancelar</button>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label>Colonia</label>
+                                <input class="form-control" type="text" name="colonia" />
+                                <br>
+                                <label>Número integrantes</label>
+                                <input class="form-control" type="number" id="num" name="num" />
+                                    <div class="modal-body" action="">
+                                        <input type="hidden" value="create" name="action">
+                                        <label>Nombre:</label>
+                                        <input class="form-control" type="text" name="nombre" />
+                                        <br>
+                                        <label>Apellido Paterno</label>
+                                        <input class="form-control" type="text" name="aPaterno" />
+                                        <br>
+                                        <label>Apellido Materno</label>
+                                        <input class="form-control" type="text" name="aMaterno" />
+                                        <br>
+                                        <label>Teléfono</label>
+                                        <input class="form-control" type="text" name="telefono" />
+                                        <br>
+                                        <label>Rol</label>
+                                        <select class="form-select" name="rol">
+                                            <option value="1">Presidente</option>
+                                            <option value="2">Integrante</option>
+                                        </select>
+                                        <br>
+                                    <button type="submit" class="btn btn-secondary" ><i class="fas fa-times"></i> Cancelar</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-
 
 <!--MODAL ELIMINAR-->
 <form method="POST">
@@ -196,27 +163,28 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalles de Enlace</h5>
+                    <h5 class="modal-title">Detalles de Comité</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5># Enlace:</h5>
+                    <h5># Comité:</h5>
                     <label id="lbl_id"></label>
                     <br>
-                    <h5>Nombre completo:</h5>
-                    <label id="lbl_nombre"></label>
-                    <br>
-                    <h5>Municipio:</h5>
-                    <label id="lbl_municipio"></label>
-                    <br>
-                    <h5>Colonia:</h5>
+                    <h5>Colonia</h5>
                     <label id="lbl_colonia"></label>
                     <br>
-                    <h5>Calle:</h5>
-                    <label id="lbl_calle"></label>
+                    <h5>Presidente:</h5>
+                    <label id="lbl_presidente"></label>
+                    <br>
+                    <h5># Integrantes:</h5>
+                    <label id="lbl_integrantes"></label>
                     <br>
                     <h5>Teléfono:</h5>
                     <label id="lbl_telefono"></label>
+                    <br>
+                    <h5>Estado:</h5>
+                    <label id="lbl_estado"></label>
+                    <br>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
@@ -235,5 +203,6 @@
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="<%=context%>/assets/js/gestionarComites.js"></script>
 </body>
 </html>
