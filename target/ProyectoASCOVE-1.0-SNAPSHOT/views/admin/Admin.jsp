@@ -93,7 +93,7 @@
 
 
 <!--MODAL REGISTRAR-->
-<form method="POST">
+<form method="POST" action="">
 <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -102,7 +102,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" action="">
-                <input type="hidden" value="create" name="action">
                 <label>Nombre:</label>
                 <input class="form-control" type="text" name="nombre" />
                 <br>
@@ -114,7 +113,7 @@
                 <br>
                 <label>Municipio</label>
                 <select class="form-select fecha" id="municipio" name="municipio"  >
-                    <option value="0" class="text-muted text-gray-900">Selecciona</option>
+                    <option value="0" class="text-muted text-gray-900">Selecciona una opción</option>
                     <option value="1">Amacuzac</option>
                     <option value="2">Atlatlahucan</option>
                     <option value="3">Axochiapan</option>
@@ -162,12 +161,12 @@
                 <!--<label>Estado</label>
                 <select class="form-select" name="estadoAdmin">
                 <select class="form-select" name="estadoAdmin">
-                    <option value="1">Actvo</option>
+                    <option value="1">Activo</option>
                     <option value="0">Inactivo</option>
                 </select>
                 <br>-->
                 <button type="submit" class="btn btn-secondary" ><i class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Registrar </button>
             </div>
         </div>
     </div>
