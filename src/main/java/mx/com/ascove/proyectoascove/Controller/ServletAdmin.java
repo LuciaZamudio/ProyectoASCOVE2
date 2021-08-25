@@ -14,12 +14,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(name = "ServletAdmin", urlPatterns = {"/readUsers", "/createUser"})
+@WebServlet(name = "ServletAdmin", urlPatterns = {"/createUser"})
 
 public class ServletAdmin extends HttpServlet {
 
-    private Map map = new HashMap();
-    final private Logger CONSOLE = LoggerFactory.getLogger(ServletAdmin.class);
+    Logger CONSOLE = LoggerFactory.getLogger(ServletAdmin.class);
+    BeanEmpleados beanEmpleados = new BeanEmpleados();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +31,7 @@ public class ServletAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Map map = new HashMap();
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
 

@@ -80,8 +80,8 @@ public class DaoEmpleados {
 
     }
 //Sirve para probar el procedimiento
-  /*
-    public static void main(String[] args) {
+
+ /*   public static void main(String[] args) {
         BeanEmpleados mp = new BeanEmpleados();
         DaoEmpleados de = new DaoEmpleados();
 
@@ -91,6 +91,7 @@ public class DaoEmpleados {
         mp.setaPaterno("Gutierrez");
         mp.setaMaterno("Rojas");
         mp.setCalle("Flores");
+        mp.setColonia("titg");
         mp.setMunicipio(2);
 
         registre = de.create(mp);
@@ -99,6 +100,7 @@ public class DaoEmpleados {
         }else {
             System.out.println("ha ocurrido un error");
         }
+        System.out.println("========================================");
         List<BeanEmpleados> listUsers = new ArrayList<>();
         listUsers = de.findAll();
 

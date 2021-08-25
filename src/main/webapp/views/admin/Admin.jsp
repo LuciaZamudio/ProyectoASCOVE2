@@ -42,6 +42,7 @@
         <table class="table table2">
             <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>Nombre Completo</th>
                 <th>Calle</th>
                 <th>Colonia</th>
@@ -52,12 +53,14 @@
 
             <tbody>
 
-                <c:forEach items="${listUsers} " var="emp" >
+                <c:forEach items="${listUsers}" varStatus="status" var="emp">
                 <tr>
+                    <td>${status.count}</td>
                     <td>${ emp.Nombre } ${emp.ApellidoPaterno} ${emp.ApellidoMaterno}</td>
                     <td>${ emp.Calle }</td>
                     <td>${ emp.Colonia }</td>
                     <td>${ emp.Municipio }</td>
+                    <td>${emp.idEmpleado}</td>
                     <!--<td>
                         <c:if test="${ game.status == 1 }">
                             <form action="" method="POST" style="display: inline;">

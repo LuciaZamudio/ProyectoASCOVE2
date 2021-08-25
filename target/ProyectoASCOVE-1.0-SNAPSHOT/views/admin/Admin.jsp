@@ -49,13 +49,16 @@
                 <th>Acción</th>
             </tr>
             </thead>
+
             <tbody>
-            <c:forEach items="${listUsers} " var="emp" >
+
+                <c:forEach items="${listUsers} " varStatus="status" var="emp"  >
                 <tr>
                     <td>${ emp.Nombre } ${emp.ApellidoPaterno} ${emp.ApellidoMaterno}</td>
                     <td>${ emp.Calle }</td>
                     <td>${ emp.Colonia }</td>
                     <td>${ emp.Municipio }</td>
+                    <td> </td>
                     <!--<td>
                         <c:if test="${ game.status == 1 }">
                             <form action="" method="POST" style="display: inline;">
@@ -70,8 +73,10 @@
                         </c:if>
                     </td>-->
                 </tr>
-            </c:forEach>
+                </c:forEach>
+
             </tbody>
+
         </table>
     </div>
 </main>
