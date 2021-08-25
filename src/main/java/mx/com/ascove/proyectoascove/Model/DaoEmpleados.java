@@ -33,16 +33,14 @@ public class DaoEmpleados {
 
             while (rs.next()){
                 BeanUsuario user =new BeanUsuario();
-                    BeanEmpleados emp = new BeanEmpleados();
+                BeanEmpleados emp = new BeanEmpleados();
 
-                emp.setIdEmpleado(rs.getInt("idEmpleados"));
                 emp.setNombreEmpleados(rs.getString("Nombre"));
                 emp.setaPaterno(rs.getString("ApellidoPaterno"));
                 emp.setaPaterno(rs.getString("ApellidoMaterno"));
                 emp.setCalle(rs.getString("Calle"));
                 emp.setColonia(rs.getString("Colonia"));
                 emp.setMunicipio(rs.getInt("Municipio"));
-                user.setIdUsuario(rs.getInt("Usuario"));
                 listUsers.add(emp);
             }
         }catch(SQLException e){
