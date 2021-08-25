@@ -93,7 +93,7 @@
 
 
 <!--MODAL REGISTRAR-->
-<form method="POST" action="">
+<form method="POST" action="<%=context%>/ServletAdmin">
 <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -101,7 +101,15 @@
                 <h5 class="modal-title">Agregar Administrador</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" action="">
+            <div class="modal-body">
+                <label>Número Usuario</label>
+                <select class="form-select fecha" id="idRol" name="idRol"  >
+                    <option value="1">Administrador</option>
+                    <option value="2">Enlace</option>
+                    <option value="3">Integrante</option>
+                    <option value="4">Presidente</option>
+                </select>
+                <br>
                 <label>Nombre:</label>
                 <input class="form-control" type="text" name="nombre" />
                 <br>
@@ -110,6 +118,9 @@
                 <br>
                 <label>Apellido Materno</label>
                 <input class="form-control" type="text" name="aMaterno" />
+                <br>
+                <label>Calle</label>
+                <input class="form-control" type="text" name="calle" />
                 <br>
                 <label>Municipio</label>
                 <select class="form-select fecha" id="municipio" name="municipio"  >
@@ -149,24 +160,9 @@
                     <option value="33">Yecapixtla</option>
                 </select>
                 <br>
-                <label>Colonia</label>
-                <input class="form-control" type="text" name="colonia" />
                 <br>
-                <label>Calle</label>
-                <input class="form-control" type="text" name="calle" />
-                <br>
-                <label>Teléfono</label>
-                <input class="form-control" type="text" name="telefono" />
-                <br>
-                <!--<label>Estado</label>
-                <select class="form-select" name="estadoAdmin">
-                <select class="form-select" name="estadoAdmin">
-                    <option value="1">Activo</option>
-                    <option value="0">Inactivo</option>
-                </select>
-                <br>-->
                 <button type="submit" class="btn btn-secondary" ><i class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Registrar </button>
+                <button type="submit" class="btn btn-success" name="action" value="create"><i class="fas fa-plus"></i> Registrar </button>
             </div>
         </div>
     </div>
