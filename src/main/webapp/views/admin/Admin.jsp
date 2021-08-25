@@ -42,6 +42,7 @@
         <table class="table table2">
             <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>Nombre Completo</th>
                 <th>Calle</th>
                 <th>Colonia</th>
@@ -54,25 +55,24 @@
 
                 <c:forEach items="${listUsers}" varStatus="status" var="emp">
                 <tr>
+                    <td>${emp.count}</td>
                     <td>${ emp.Nombre } ${emp.ApellidoPaterno} ${emp.ApellidoMaterno}</td>
                     <td>${ emp.Calle }</td>
                     <td>${ emp.Colonia }</td>
                     <td>${ emp.Municipio }</td>
-                    <td>
-
-                    </td>
+                    <td>${emp.Usuario}</td>
                     <!--<td>
-                        <c:if test="${ game.status == 1 }">
+                        <c: if test="$ { game.status == 1 }">
                             <form action="" method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="getUserById">
-                                <input type="hidden" name="id" value="${ game.idGame }">
+                                <input type="hidden" name="id" value="$ { game.idGame }">
                                 <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Modificar</button>
                             </form>
                             <button id="btnDelete" type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete"><i class="fas fa-trash"></i> Eliminar</button>
-                        </c:if>
-                        <c:if test="${ game.status == 0 }">
-                            <button id="btn-details-${ status.count }" data-code="${ game.idGame }" type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
-                        </c:if>
+                        </c: if>
+                        <c: if test="$ { game.status == 0 }">
+                            <button id="btn-details-$ { status.count }" data-code="$ { game.idGame }" type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#details"><i class="fas fa-info-circle"></i> Detalles</button>
+                        </c: if>
                     </td>-->
                 </tr>
                 </c:forEach>
