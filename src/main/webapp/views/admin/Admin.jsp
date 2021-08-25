@@ -1,30 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: villa
-  Date: 23/08/2021
-  Time: 07:10 p. m.
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% String context = request.getContextPath(); %>
+<c:set var="context" value="${pageContext.request.contextPath}" />
+
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="<%=context%>/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg">
+    <link rel="shortcut icon" href="${context}/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Lucía Zamudio, Julio Gutierrez, Isaac Galindo, Gonzalez Fernanda, Solís Pablo">
     <meta name="generator" content="ASCOVE">
-    <link rel="stylesheet" href="<%=context%>/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=context%>/assets/css/styles.css">
+    <link rel="stylesheet" href="${context}/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${context}/assets/css/styles.css">
     <title>Administrador</title>
 </head>
 <body class="text-center fondo texto">
 <main name="">
     <div class="any">
-        <img src="<%=context%>/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg" class="izquierda" alt="No encontrado">
-        <img src="<%=context%>/assets/img/image_750x_5e93e4dd3fa46.jpg" class="derecha" alt = "No Encontrado">
+        <img src="${context}/assets/img/logo_poder_ejecutivo_2018-2024_25.jpg" class="izquierda" alt="No encontrado">
+        <img src="${context}/assets/img/image_750x_5e93e4dd3fa46.jpg" class="derecha" alt = "No Encontrado">
         <h1>ASCOVE</h1>
         <h2>Atención de Solicitudes de Comités Vecinales</h2>
         <br>
@@ -40,7 +34,7 @@
     </nav>
 
     <div class="alinear margen3">
-        <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register"> Agregar Administrador</a>
+        <a type="button" class="btn boton" data-bs-toggle="modal" data-bs-target="#register" action="${context}/ServletAdmin"> Agregar Administrador</a>
         <input  restrict="reject" class="ng-pristine ng-untouched ng-valid ng-empty" id="numEnlace" placeholder="# Administrador">
         <button class="btn boton" type="submit">Buscar</button>
     </div>
@@ -48,30 +42,23 @@
         <table class="table table2">
             <thead class="table-dark">
             <tr>
-                <th># Administrador</th>
-                <th>Municipio</th>
                 <th>Nombre Completo</th>
-                <th>Teléfono</th>
+                <th>Calle</th>
+                <th>Colonia</th>
+                <th>Municipio</th>
                 <th>Acción</th>
             </tr>
             </thead>
+
             <tbody>
-            <c:forEach items=" " var=" " varStatus="status">
+
+                <c:forEach items="${listUsers} " var="emp" >
                 <tr>
-                   <!-- <td>${""  }</td>
-                    <td>${ "" }</td>
-                    <td>${ "" }</td>
-                    <td>${ "" }</td>
-                    <td>${ ""}</td>
-                    <td>
-                        <c:if test="${ game.status == 1 }">
-                            <span class="badge rounded-pill bg-success">Activo</span>
-                        </c:if>
-                        <c:if test="${ game.status == 0 }">
-                            <span class="badge rounded-pill bg-danger">Inactivo</span>
-                        </c:if>
-                    </td>
-                    <td>
+                    <td>${ emp.Nombre } ${emp.ApellidoPaterno} ${emp.ApellidoMaterno}</td>
+                    <td>${ emp.Calle }</td>
+                    <td>${ emp.Colonia }</td>
+                    <td>${ emp.Municipio }</td>
+                    <!--<td>
                         <c:if test="${ game.status == 1 }">
                             <form action="" method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="getUserById">
@@ -85,15 +72,17 @@
                         </c:if>
                     </td>-->
                 </tr>
-            </c:forEach>
+                </c:forEach>
+
             </tbody>
+
         </table>
     </div>
 </main>
 
 
 <!--MODAL REGISTRAR-->
-<form method="POST" action="<%=context%>/ServletAdmin">
+<form method="POST" action="${context}/createUser">
 <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -121,6 +110,9 @@
                 <br>
                 <label>Calle</label>
                 <input class="form-control" type="text" name="calle" />
+                <br>
+                <label>Colonia</label>
+                <input class="form-control" type="text" name="colonia" />
                 <br>
                 <label>Municipio</label>
                 <select class="form-select fecha" id="municipio" name="municipio"  >

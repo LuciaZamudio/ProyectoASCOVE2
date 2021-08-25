@@ -10,18 +10,20 @@ public class BeanEmpleados {
     private String aPaterno;
     private String aMaterno;
     private String calle;
+    private String colonia;
     private int municipio;
     private BeanUsuario idUsuario;
 
     public BeanEmpleados() {
     }
 
-    public BeanEmpleados(int idEmpleado, String nombreEmpleados, String aPaterno, String aMaterno, String calle, int municipio, BeanUsuario idUsuario) {
+    public BeanEmpleados(int idEmpleado, String nombreEmpleados, String aPaterno, String aMaterno, String calle, String colonia, int municipio, BeanUsuario idUsuario) {
         this.idEmpleado = idEmpleado;
         this.nombreEmpleados = nombreEmpleados;
         this.aPaterno = aPaterno;
         this.aMaterno = aMaterno;
         this.calle = calle;
+        this.colonia = colonia;
         this.municipio = municipio;
         this.idUsuario = idUsuario;
     }
@@ -64,6 +66,14 @@ public class BeanEmpleados {
 
     public void setCalle(String calle) {
         this.calle = calle;
+    }
+
+    public String getColonia() {
+        return colonia;
+    }
+
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
     }
 
     public int getMunicipio() {
